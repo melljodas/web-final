@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Management</title>
+    <link rel="icon" type="image/x-icon" href="icon/images (1).jpg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Awesome', sans-serif;
+            background-color: #3f3f3f;
+            color: #333;
+            color: #cec9c9;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #2c2c2c;
+            color: #cec9c9;
+            padding: 20px 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        }
+        .sidebar h2 {
+            color: #cec9c9;
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+        .sidebar ul li a {
+            color: #cec9c9;
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .sidebar ul li a:hover {
+            background-color: #555;
+            color: #cec9c9;
+        }
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+        .jumbotron {
+            background: #363636;
+            border: 1px solid #494949;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(94, 94, 94, 0.1);
+            
+        }
+        .jumbotron h1 {
+            font-weight: bold;
+            color: #cec9c9;
+        }
+        .jumbotron p {
+            color: #cec9c9;
+        }
+        footer {
+            background-color: #2c2c2c;
+            color: #cec9c9;
+            text-align: center;
+            padding: 1rem;
+        }
+        footer a {
+            color: #dfd9d9;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .feature {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .feature i {
+            font-size: 3rem;
+            color: #070707;
+        }
+        .feature h3 {
+            margin-top: 15px;
+            color: #444;
+        }
+        .feature p {
+            color: #666;
+        }
+body.dark-mode {
+    background-color: #3f3f3f;
+    color: #cec9c9;
+}
+
+body.dark-mode .sidebar {
+    background-color: #2c2c2c;
+}
+
+body.dark-mode .jumbotron {
+    background: #363636;
+    border: 1px solid #494949;
+    color: #cec9c9;
+}
+
+body.light-mode {
+    background-color: #f9f9f9;
+    color: #000000;
+}
+
+body.light-mode .sidebar {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.light-mode .sidebar ul li a {
+    color: #000000;
+}
+
+body.light-mode .sidebar ul li a:hover {
+    background-color: #ddd;
+    color: #000000;
+}
+
+body.light-mode .jumbotron {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    color: #000000;
+}
+
+body.light-mode footer {
+    background-color: #f1f1f1;
+    color: #000000;
+}
+
+body.light-mode footer a {
+    color: #000000;
+}
+body.light-mode h1, body.light-mode h2, body.light-mode p {
+    color: #222;
+}.circle-img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.carousel-inner img {
+        width: 100%;
+        max-height: 400px;
+        object-fit: cover;
+    }
+
+    .carousel-item {
+        margin-bottom: 20px;
+    }
+
+    #myCarousel {
+        margin-bottom: 30px;
+    }
+
+
+
+    </style>
+</head>
+<body>
+  <button class="toggle-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i> Menu</button>
+
+  <div class="sidebar" id="sidebar">
+      <h2><i class="fas fa-clock"></i> Time Management</h2>
+      <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="techniques.html"><i class="fas fa-lightbulb"></i> Techniques</a></li>
+          <li><a href="quiz.html"><i class="fas fa-question-circle"></i> Quiz</a></li>
+      </ul>
+  </div>
+
+    <div class="content">
+        <div class="jumbotron text-center">
+            <h1>The Importance of Time Management</h1>
+            <p class="lead">Time management is the key to a productive life, allowing you to achieve more with less effort.</p>
+            <button id="themeToggle" class="btn btn-secondary" style="position: fixed; top: 20px; right: 20px; z-index: 1000;">Switch Theme</button>
+            <script>
+              const themeToggle = document.getElementById('themeToggle');
+              const body = document.body;
+          
+              const savedTheme = localStorage.getItem('theme');
+              if (savedTheme) {
+                  body.classList.add(savedTheme);
+                  themeToggle.textContent = savedTheme === 'light-mode' ? 'Switch to Dark Mode' : 'Switch to Light Mode';
+              }
+          
+              themeToggle.addEventListener('click', () => {
+                  if (body.classList.contains('dark-mode')) {
+                      body.classList.remove('dark-mode');
+                      body.classList.add('light-mode');
+                      themeToggle.textContent = 'Switch to Dark Mode';
+                      localStorage.setItem('theme', 'light-mode');
+                  } else {
+                      body.classList.remove('light-mode');
+                      body.classList.add('dark-mode');
+                      themeToggle.textContent = 'Switch to Light Mode';
+                      localStorage.setItem('theme', 'dark-mode');
+                  }
+              });
+          </script>
+          
+          
+
+        </div>
+        <main>
+
+            <div id="myCarousel" class="carousel slide mb-3" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class="active" aria-current="true"></button>
+              </div>
+              <div id="carouselExampleFade" class="carousel slide carousel-fade">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="icon/6309b7eaba59b763f572c9a3cf3e4982.jpg" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="icon/2fb48d4f02f61211c56f53aec008390b.jpg" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="icon/406d941b9978384bd9008b1f81c613a3.jpg" class="d-block w-100" alt="...">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          
+          
+            
+            <div class="container marketing">
+          
+<div class="row justify-content-center">
+  <div class="col-lg-5 mx-3">
+      <div class="circle-img">
+          <img src="icon/time-management-skills-.webp" alt="Image 1">
+      </div>
+      <h2 class="fw-normal">Techniques</h2>
+      <p>Learn new time management techniques</p>
+      <p><a class="btn btn-secondary" href="techniques.html">View details »</a></p>
+  </div>
+
+  <div class="col-lg-5 mx-3">
+      <div class="circle-img">
+          <img src="icon/time-management-strategies.webp" alt="Image 2">
+      </div>
+      <h2 class="fw-normal">Quiz</h2>
+      <p>take the survey and find out how well you have developed time management</p>
+      <p><a class="btn btn-secondary" href="quiz.html">View details »</a></p>
+  </div>
+</div>
+
+
+          
+          
+          
+              <hr class="featurette-divider">
+          
+              <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading fw-normal lh-1">Effectiveness in Time Management <span class="text-body-secondary"></span></h2>
+                    <p class="lead">Effectiveness in Time Management
+                      Mastering time management is essential for boosting your effectiveness in both personal and professional life. By implementing proven strategies such as prioritizing tasks, setting clear goals, and minimizing distractions, you can manage your time better, ensuring you accomplish more in less time. These strategies will empower you to focus on what truly matters, leading to a more productive and fulfilling day.</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="icon/296452443d9383c8c1b71c775c1b4c27.jpg" alt="zxc" class="featurette-image img-fluid mx-auto " style="border: #070707; border-radius: 20px; " box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); width="300" height="300" >
+                </div>
+            </div>
+            
+          
+              <hr class="featurette-divider">
+          
+              <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                    <h2 class="featurette-heading fw-normal lh-1">Strategic Planning for Success <span class="text-body-secondary"></span></h2>
+                    <p class="lead">Successful time management starts with careful planning. Learn how to break down your long-term goals into achievable, actionable steps. By setting realistic deadlines and creating detailed plans, you’ll build a structured roadmap that keeps you on track. This approach helps reduce stress, ensures steady progress, and allows you to achieve your goals in a step-by-step manner, without feeling overwhelmed.</p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <img src="icon/2fb48d4f02f61211c56f53aec008390b.jpg" alt="zxc" class="featurette-image img-fluid mx-auto"  style="border: #070707; border-radius: 20px; " width="300" height="300">
+                </div>
+            </div>
+            
+          
+              <hr class="featurette-divider">
+          
+              <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading fw-normal lh-1">Boosting Productivity with Time Management
+                      <span class="text-body-secondary"></span></h2>
+                    <p class="lead">Time management is the key to unlocking your productivity potential. By adopting proven strategies like time-blocking, task prioritization, and avoiding multitasking, you can work smarter, not harder. These techniques will help you focus on high-impact activities, reduce procrastination, and accomplish more in less time. As you master these methods, you’ll see a noticeable improvement in your efficiency and overall output.</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="icon/406d941b9978384bd9008b1f81c613a3.jpg" alt="Продуктивность" class="featurette-image img-fluid mx-auto" style="border: #070707; border-radius: 20px; " width="300" height="300">                </div>
+            </div>
+            
+          
+              <hr class="featurette-divider">
+          
+          
+            </div>
+          
+          
+            <footer class="container">
+              <p class="float-end"><a href="#">Back to top</a></p>
+              <p>© 2024 Time Management | Mukhatov Batyrkhan </p>
+            </footer>
+          </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
